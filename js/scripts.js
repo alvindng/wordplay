@@ -3,8 +3,8 @@ $(document).ready(function() {
 
     var sentence = $("input#sentence").val();
     var space = " ";
-    var comma = ",";
     var arrayOfStrings;
+    var newSentence = [];
 
     function splitString(stringToSplit, separator) {
       var arrayOfStrings = stringToSplit.split(separator);
@@ -12,7 +12,16 @@ $(document).ready(function() {
     }
 
     var newArray = splitString(sentence, space);
-    alert(newArray);
+
+    newArray.forEach(function(element){
+      if (element.length > 2) {
+        newSentence.push(element)
+        newSentence.reverse();
+      }
+    })
+
+    var finalSentence = newSentence.join(" ");
+    document.getElementById("new-sentence").innerHTML = finalSentence;
 
     event.preventDefault();
   });
